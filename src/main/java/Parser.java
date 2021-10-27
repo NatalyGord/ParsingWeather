@@ -1,5 +1,6 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,11 @@ public class Parser {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(getPageCode());
+//        System.out.println(getPageCode());
+        Document pageCode = getPageCode();
+
+        Element pageCodeWeather = pageCode.selectFirst("div[class=block rc5 b2]");
+        System.out.println(pageCodeWeather);
+
     }
 }
