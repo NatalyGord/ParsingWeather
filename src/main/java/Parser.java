@@ -17,11 +17,11 @@ public class Parser {
         return pageCode;
     }
 
-    private static Pattern pattern = Pattern.compile("[А-Я][а-я]{4,}\\s\\d{2}\\s[а-яА-Я]+"); //Четверг 28 октября
+    private static Pattern pattern = Pattern.compile("[А-Я][а-я]{4,}\\s\\d\\d?\\s[а-яА-Я]+"); //Четверг 28 октября
 
     public static String[] getDate(String nameDateString) throws Exception {
         int count = 0;
-        String[] allMatches = new String[3];
+        String[] allMatches = new String[4];
         Matcher matcher = pattern.matcher(nameDateString);
 
         while (matcher.find()) {
@@ -65,6 +65,9 @@ public class Parser {
         Elements nameColumns = pageCodeWeather.select("tr[height=20px]");
 
         String nameDateString = pageCodeWeather.text(); //строка из которой выбираем даты
+
+//        System.out.println(nameDateString);
+//        String [] nameDate = {" 1", " 2", " 3", " 4"};
         String[] nameDate = getDate(nameDateString);  //массив найденых дат
 
 //        System.out.println(nameDateString);
